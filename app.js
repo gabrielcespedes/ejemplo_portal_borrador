@@ -185,3 +185,82 @@ window.eliminarDeOrden = (index) => {
 // Ejecutamos estas funciones apenas cargue el código para que todo se vea bien
 renderizarCatalogo();
 renderizarOrden();
+
+// ==========================================
+// 10. LÓGICA DE CHECKOUT Y VALIDACIÓN (Seguridad Frontend)
+// ==========================================
+const btnAgendar = document.getElementById("btn-agendar");
+const checkoutSection = document.getElementById("checkout-section");
+const formCheckout = document.getElementById("form-checkout");
+
+// Al hacer clic en "Confirmar Agendamiento"
+btnAgendar.addEventListener("click", () => {
+    // Ocultamos el catálogo y mostramos el formulario
+    document.getElementById("lista-examenes").style.display = "none";
+    document.getElementById("orden-medica").style.display = "none";
+    checkoutSection.style.display = "block";
+});
+
+// Botón cancelar: vuelve atrás
+document.getElementById("btn-cancelar").addEventListener("click", () => {
+    document.getElementById("lista-examenes").style.display = "grid";
+    document.getElementById("orden-medica").style.display = "block";
+    checkoutSection.style.display = "none";
+});
+
+// Al enviar el formulario (Validación de Seguridad)
+formCheckout.addEventListener("submit", (evento) => {
+    evento.preventDefault(); // Evitamos que la página se recargue
+
+    const correo = document.getElementById("input-correo").value;
+    const telefono = document.getElementById("input-telefono").value;
+    
+    let esValido = true;
+
+    // 1. Validación de Correo (Debe tener @ y un punto)
+    if (!correo.includes("@") || !correo.includes(".")) {
+        document.getElementById("error-correo").style.display = "block";
+        esValido = false;
+    } else {
+        document.getElementById("error-correo").style.display = "none";
+    }
+
+    // 2. Validación de Teléfono (Usamos Expresiones Regulares para exigir SOLO números)
+    // El ^\d+$ significa: desde el inicio (^) hasta el fin ($), solo dígitos (\d) al menos uno (+)
+    const regexNumeros = /^\d+$/; 
+    if (!regexNumeros.test(telefono) || telefono.length < 8) {
+        document.getElementById("error-telefono").style.display = "block";
+        esValido = false;
+    } else {
+        document.getElementById("error-telefono").style.display = "none";
+    }
+
+    // Si todo es seguro y válido, procesamos la "compra"
+    if (esValido) {
+        finalizarAgendamiento();
+    }
+});
+
+function finalizarAgendamiento() {
+    // 1. Ocultamos el formulario
+    checkoutSection.style.display = "none";
+    
+    // 2. Armamos el resumen para el paciente
+    const resumenDiv = document.getElementById("resumen-final");
+    let htmlResumen = `<ul>`;
+    let total = 0;
+    ordenMedica.forEach(item => {
+        htmlResumen += `<li>${item.nombre} - $${item.precio.toLocaleString('es-CL')}</li>`;
+        total += item.precio;
+    });
+    htmlResumen += `</ul><hr><strong>Total Pagado: $${total.toLocaleString('es-CL')}</strong>`;
+    resumenDiv.innerHTML = htmlResumen;
+
+    // 3. Mostramos la pantalla de éxito
+    document.getElementById("mensaje-exito").style.display = "block";
+
+    // 4. EL PASO DE SEGURIDAD CRÍTICO: Limpiar la sesión [cite: 596]
+    // Una vez finalizada la compra, no debemos dejar datos sensibles en el navegador
+    sessionStorage.removeItem("orden_clinica");
+    ordenMedica = []; // Vaciamos la memoria de Javascript
+}
