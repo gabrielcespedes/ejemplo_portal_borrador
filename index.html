@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Clínico - Agendamiento</title>
+    
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.auth0.com/js/auth0-spa-js/2.1/auth0-spa-js.production.js"></script>
+</head>
+<body>
+
+    <nav>
+        <h1>Clínica Salud Digital</h1>
+        <div id="auth-ui">
+            <button id="btn-login">Iniciar Sesión</button>
+            <button id="btn-logout" style="display: none;">Cerrar Sesión</button>
+            <span id="mensaje-bienvenida"></span>
+        </div>
+    </nav>
+
+    <main id="app-content" style="display: none;">
+        
+        <h2>Agendamiento de Exámenes</h2>
+        <p>Seleccione los exámenes que necesita realizar:</p>
+
+        <section id="lista-examenes" class="grid-container">
+            </section>
+
+        <aside id="orden-medica">
+            <h3>Su Orden Médica</h3>
+            <ul id="lista-orden">
+                </ul>
+            <p><strong>Total Copago: $<span id="total-copago">0</span></strong></p>
+            <button id="btn-agendar" disabled>Confirmar Agendamiento</button>
+        </aside>
+
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
