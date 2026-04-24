@@ -21,10 +21,16 @@
         </div>
     </nav>
 
+    <header class="hero-banner">
+        <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Clínica Salud Digital">
+    </header>
+
     <main id="app-content" style="display: none;">
         
-        <h2>Agendamiento de Exámenes</h2>
-        <p>Seleccione los exámenes que necesita realizar:</p>
+        <div id="encabezado-catalogo">
+            <h2>Agendamiento de Exámenes</h2>
+            <p>Seleccione los exámenes que necesita realizar:</p>
+        </div>
 
         <section id="lista-examenes" class="grid-container">
             </section>
@@ -36,6 +42,43 @@
             <p><strong>Total Copago: $<span id="total-copago">0</span></strong></p>
             <button id="btn-agendar" disabled>Confirmar Agendamiento</button>
         </aside>
+
+        <section id="checkout-section" style="display: none; width: 100%; margin-top: 20px;">
+            <div class="checkout-card">
+                <h3>Datos del Paciente para Confirmación</h3>
+                <form id="form-checkout">
+                    <div class="form-group">
+                        <label>Nombre Completo:</label>
+                        <input type="text" id="input-nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Dirección (Sucursal o Domicilio):</label>
+                        <input type="text" id="input-direccion" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Correo Electrónico:</label>
+                        <input type="text" id="input-correo" placeholder="ejemplo@correo.com" required>
+                        <span id="error-correo" style="color: red; font-size: 0.8rem; display: none;">Debe contener '@' y un dominio válido.</span>
+                    </div>
+                    <div class="form-group">
+                        <label>Teléfono de Contacto:</label>
+                        <input type="text" id="input-telefono" placeholder="Ej: 987654321" required>
+                        <span id="error-telefono" style="color: red; font-size: 0.8rem; display: none;">Solo se permiten números (mínimo 8 dígitos).</span>
+                    </div>
+                    
+                    <button type="submit" id="btn-finalizar">Finalizar Agendamiento</button>
+                    <button type="button" id="btn-cancelar" style="background: #6c757d;">Cancelar</button>
+                </form>
+            </div>
+        </section>
+
+        <section id="mensaje-exito" style="display: none; width: 100%; text-align: center; margin-top: 40px;">
+            <h2 style="color: #28a745;">✅ ¡Exámenes Agendados con Éxito!</h2>
+            <p>Gracias por confiar en Clínica Salud Digital.</p>
+            <div id="resumen-final" style="background: white; padding: 20px; border-radius: 8px; display: inline-block; text-align: left;"></div>
+            <br><br>
+            <button onclick="location.reload()">Volver al Inicio</button>
+        </section>
 
     </main>
 

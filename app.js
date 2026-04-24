@@ -195,6 +195,7 @@ const formCheckout = document.getElementById("form-checkout");
 
 // Al hacer clic en "Confirmar Agendamiento"
 btnAgendar.addEventListener("click", () => {
+    document.getElementById("encabezado-catalogo").style.display = "none";
     // Ocultamos el catálogo y mostramos el formulario
     document.getElementById("lista-examenes").style.display = "none";
     document.getElementById("orden-medica").style.display = "none";
@@ -203,6 +204,7 @@ btnAgendar.addEventListener("click", () => {
 
 // Botón cancelar: vuelve atrás
 document.getElementById("btn-cancelar").addEventListener("click", () => {
+    document.getElementById("encabezado-catalogo").style.display = "block";
     document.getElementById("lista-examenes").style.display = "grid";
     document.getElementById("orden-medica").style.display = "block";
     checkoutSection.style.display = "none";

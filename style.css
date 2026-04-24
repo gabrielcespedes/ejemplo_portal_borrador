@@ -15,6 +15,21 @@ nav {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
+/* Estilos para el Banner de Inicio */
+.hero-banner {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.hero-banner img {
+    width: 100%;           /* Ocupa todo el ancho disponible */
+    height: 300px;         /* Fija una altura como un "banner" */
+    object-fit: cover;     /* Evita que la imagen se deforme o estire */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
 button {
     background-color: #0056b3;
     color: white;
