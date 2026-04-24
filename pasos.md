@@ -23,3 +23,15 @@ Copia y guarda tu **Domain** y tu **Client ID** (están casi al principio).
 Baja un poco en esa misma pantalla hasta encontrar las secciones **Allowed Callback URLs**, **Allowed Logout URLs** y **Allowed Web Origins**. En las tres cajas de texto, pega la dirección de tu servidor local (por ejemplo: **http://localhost:5500**).
 
 Ve al final de la página y presiona **Save Changes**.
+
+## **tags**
+
+**html** Muestras la estructura base, el CDN de Auth0, los contenedores vacíos y explicas la extensión Live Server.
+
+**auth0** Muestras el Dashboard, traes el Domain y Client ID, y configuras la función básica de redirigir al login y procesar la vuelta (loginWithRedirect y handleRedirectCallback).
+
+**status**  Aquí te detienes a explicar la función updateUI(). Muestras cómo el JavaScript lee el estado del usuario (isAuthenticated) y altera el DOM dinámicamente (cambia botones y dice "Bienvenido, paciente").
+
+**catalogo_storage** Llenas la pantalla con los exámenes, programas el "carrito" (Orden Médica) y muestras la magia del sessionStorage sobreviviendo al F5.
+ 
+**final** Integras el formulario de Checkout, la validación de seguridad (sanitización de inputs con Regex), el mensaje de éxito y la limpieza final de la sesión. (¡Y la foto del Hero Banner!).
