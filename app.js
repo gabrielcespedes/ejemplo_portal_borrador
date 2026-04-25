@@ -4,8 +4,8 @@
 // ==========================================
 // Aquí pegamos las llaves que nos dio Auth0 en el Dashboard
 const auth0Config = {
-    domain: "dev-q0nyeiaxgarzlzjm.us.auth0.com", // Ej: dev-xxxx.us.auth0.com
-    clientId: "lHehndIz0gsplumtzwkGhj0OSUoXBFh7", // Ej: Abc123xyz...
+    domain: "dev-xxxx.us.auth0.com", // Ej: dev-xxxx.us.auth0.com
+    clientId: "Abc123xyz", // Ej: Abc123xyz...
     authorizationParams: {
         // Redirigimos al usuario a nuestro Live Server tras iniciar sesión
         redirect_uri: window.location.origin 
